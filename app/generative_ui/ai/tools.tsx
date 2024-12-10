@@ -18,7 +18,7 @@ export async function images(input: { query: string }) {
     return `${baseUrl}/${path}?${searchParams}`;
   }
 
-  const baseUrl = "https://serpapi.com";
+  const baseUrl = "https://google.serper.dev";
   const response = await fetch(
     buildUrl(
       "search",
