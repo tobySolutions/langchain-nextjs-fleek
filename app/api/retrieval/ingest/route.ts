@@ -4,14 +4,9 @@ import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import { createClient } from "@supabase/supabase-js";
 import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import { OpenAIEmbeddings } from "@langchain/openai";
-import getConfig from "next/config";
 
-const { serverRuntimeConfig } = getConfig();
+export const runtime = 'edge';
 
-export const runtime = "edge";
-
-const apiKey = serverRuntimeConfig.OPENAI_API_KEY;
-console.log(apiKey);
 
 // Before running, follow set-up instructions at
 // https://js.langchain.com/v0.2/docs/integrations/vectorstores/supabase
