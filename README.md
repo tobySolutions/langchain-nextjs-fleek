@@ -1,7 +1,6 @@
 # 🦜️🔗 LangChain + Next.js Starter Template
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/langchain-ai/langchain-nextjs-template)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flangchain-ai%2Flangchain-nextjs-template)
 
 This template scaffolds a LangChain.js + Next.js starter app. It showcases how to use and combine LangChain modules for several
 use cases. Specifically:
@@ -121,11 +120,6 @@ To learn more about what you can do with LangChain.js, check out the docs here:
 
 - https://js.langchain.com/docs/
 
-## ▲ Deploy on Vercel
-
-When ready, you can deploy your app on the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Thank You!
 
