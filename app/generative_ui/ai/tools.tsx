@@ -73,7 +73,7 @@ export async function search(input: { query: string }) {
   const response = await fetch(
     buildUrl(
       "search",
-      { api_key: process.env.SERPAPI_API_KEY, q: input.query },
+      { api_key: process.env.NEXT_PUBLIC_SERPAPI_API_KEY, q: input.query },
       baseUrl,
     ),
   );
