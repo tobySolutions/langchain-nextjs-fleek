@@ -4,7 +4,8 @@ import { z } from "zod";
 
 import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
-import getConfig from "next/config";
+
+export const runtime = "edge";
 
 const TEMPLATE = `Extract the requested fields from the input.
 
