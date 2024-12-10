@@ -75,6 +75,7 @@ export async function POST(req: NextRequest) {
     const currentMessageContent = messages[messages.length - 1].content;
 
     const model = new ChatOpenAI({
+      openAIApiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
       model: "gpt-4o-mini",
       temperature: 0.2,
     });

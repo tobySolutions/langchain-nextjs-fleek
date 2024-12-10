@@ -23,7 +23,7 @@ export async function images(input: { query: string }) {
     buildUrl(
       "search",
       {
-        api_key: process.env.SERPAPI_API_KEY,
+        api_key: process.env.NEXT_PUBLIC_SERPAPI_API_KEY,
         q: input.query,
         engine: "google_images",
       },

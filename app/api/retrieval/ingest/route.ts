@@ -5,7 +5,8 @@ import { createClient } from "@supabase/supabase-js";
 import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
 import { OpenAIEmbeddings } from "@langchain/openai";
 
-export const runtime = "edge";
+export const runtime = 'edge';
+
 
 // Before running, follow set-up instructions at
 // https://js.langchain.com/v0.2/docs/integrations/vectorstores/supabase

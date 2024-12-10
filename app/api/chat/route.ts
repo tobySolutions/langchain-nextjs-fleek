@@ -43,6 +43,7 @@ export async function POST(req: NextRequest) {
      * https://js.langchain.com/docs/modules/model_io/models/
      */
     const model = new ChatOpenAI({
+      openAIApiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
       temperature: 0.8,
       model: "gpt-4o-mini",
     });

@@ -11,6 +11,8 @@ import { search, images } from "./tools";
 import { Images } from "../components/image";
 import { tool } from "@langchain/core/tools";
 
+export const runtime = 'edge';
+
 const searchTool = tool(
   async (input, config) => {
     const stream = await createRunnableUI(config);
@@ -73,6 +75,7 @@ const prompt = ChatPromptTemplate.fromMessages([
 ]);
 
 const llm = new ChatOpenAI({
+  openAIApiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   model: "gpt-4o-mini",
   temperature: 0,
   streaming: true,

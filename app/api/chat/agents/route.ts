@@ -66,6 +66,7 @@ export async function POST(req: NextRequest) {
     // You can remove this or use a different tool instead.
     const tools = [new Calculator(), new SerpAPI()];
     const chat = new ChatOpenAI({
+      openAIApiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
       model: "gpt-4o-mini",
       temperature: 0,
     });
