@@ -12,7 +12,8 @@ import {
   HumanMessage,
   SystemMessage,
 } from "@langchain/core/messages";
-import getConfig from "next/config";
+
+export const runtime = "edge";
 
 const convertMessageToLangChainMessage = (message: Message) => {
   if (message.role === "user") {
