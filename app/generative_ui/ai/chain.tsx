@@ -11,6 +11,12 @@ import { search, images } from "./tools";
 import { Images } from "../components/image";
 import { tool } from "@langchain/core/tools";
 
+import getConfig from "next/config";
+
+const { serverRuntimeConfig } = getConfig();
+
+const apiKey = serverRuntimeConfig.OPENAI_API_KEY;
+
 const searchTool = tool(
   async (input, config) => {
     const stream = await createRunnableUI(config);
@@ -73,6 +79,7 @@ const prompt = ChatPromptTemplate.fromMessages([
 ]);
 
 const llm = new ChatOpenAI({
+  openAIApiKey: apiKey,
   model: "gpt-4o-mini",
   temperature: 0,
   streaming: true,
