@@ -14,7 +14,7 @@ export default function AgentsPage() {
             <a href="https://js.langchain.com/" target="_blank">
               LangChain.js
             </a>{" "}
-            agent and the Vercel{" "}
+            agent and the{" "}
             <a href="https://sdk.vercel.ai/docs" target="_blank">
               AI SDK
             </a>{" "}

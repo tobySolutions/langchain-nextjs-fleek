@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Message as VercelChatMessage, StreamingTextResponse } from "ai";
+import { Message, StreamingTextResponse } from "ai";
 
 import { createClient } from "@supabase/supabase-js";
 
@@ -17,7 +17,7 @@ import { createReactAgent } from "@langchain/langgraph/prebuilt";
 
 export const runtime = "edge";
 
-const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
+const convertMessageToLangChainMessage = (message: Message) => {
   if (message.role === "user") {
     return new HumanMessage(message.content);
   } else if (message.role === "assistant") {
@@ -27,7 +27,7 @@ const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   }
 };
 
-const convertLangChainMessageToVercelMessage = (message: BaseMessage) => {
+const convertLangChainMessageToMessage = (message: BaseMessage) => {
   if (message._getType() === "human") {
     return { content: message.content, role: "user" };
   } else if (message._getType() === "ai") {
@@ -61,10 +61,10 @@ export async function POST(req: NextRequest) {
      */
     const messages = (body.messages ?? [])
       .filter(
-        (message: VercelChatMessage) =>
+        (message: Message) =>
           message.role === "user" || message.role === "assistant",
       )
-      .map(convertVercelMessageToLangChainMessage);
+      .map(convertMessageToLangChainMessage);
     const returnIntermediateSteps = body.show_intermediate_steps;
 
     const chatModel = new ChatOpenAI({
@@ -153,7 +153,7 @@ export async function POST(req: NextRequest) {
       const result = await agent.invoke({ messages });
       return NextResponse.json(
         {
-          messages: result.messages.map(convertLangChainMessageToVercelMessage),
+          messages: result.messages.map(convertLangChainMessageToMessage),
         },
         { status: 200 },
       );

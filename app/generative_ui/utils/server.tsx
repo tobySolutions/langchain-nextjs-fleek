@@ -89,7 +89,7 @@ export function streamRunnableUI<RunInput, RunOutput>(
  *
  * @param callbackManager callback
  * @param initialValue Initial React node to be sent to the client
- * @returns Vercel AI RSC compatible streamable UI
+ * @returns AI RSC compatible streamable UI
  */
 export const createRunnableUI = async (
   config: RunnableConfig | undefined,

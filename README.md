@@ -11,7 +11,7 @@ use cases. Specifically:
 - [Retrieval augmented generation (RAG) with a chain and a vector store](/app/api/chat/retrieval/route.ts)
 - [Retrieval augmented generation (RAG) with an agent and a vector store](/app/api/chat/retrieval_agents/route.ts)
 
-Most of them use Vercel's [AI SDK](https://github.com/vercel-labs/ai) to stream tokens to the client and display the incoming messages.
+Most of them use [AI SDK](https://github.com/vercel-labs/ai) to stream tokens to the client and display the incoming messages.
 
 The agents use [LangGraph.js](https://langchain-ai.github.io/langgraphjs/), LangChain's framework for building agentic workflows. They use preconfigured helper functions to minimize boilerplate, but you can replace them with custom graphs as desired.
 
@@ -19,7 +19,6 @@ The agents use [LangGraph.js](https://langchain-ai.github.io/langgraphjs/), Lang
 
 It's free-tier friendly too! Check out the [bundle size stats below](#-bundle-size).
 
-You can check out a hosted version of this repo here: https://langchain-nextjs-template.vercel.app/
 
 ## 🚀 Getting Started
 
@@ -99,7 +98,7 @@ For more info on retrieval agents, [see this page](https://langchain-ai.github.i
 
 ## 📦 Bundle size
 
-The bundle size for LangChain itself is quite small. After compression and chunk splitting, for the RAG use case LangChain uses 37.32 KB of code space (as of [@langchain/core 0.1.15](https://npmjs.com/package/@langchain/core)), which is less than 4% of the total Vercel free tier edge function alottment of 1 MB:
+The bundle size for LangChain itself is quite small. After compression and chunk splitting, for the RAG use case LangChain uses 37.32 KB of code space (as of [@langchain/core 0.1.15](https://npmjs.com/package/@langchain/core)).
 
 ![](/public/images/bundle-size.png)
 

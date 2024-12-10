@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Message as VercelChatMessage, StreamingTextResponse } from "ai";
+import { Message, StreamingTextResponse } from "ai";
 
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { ChatOpenAI } from "@langchain/openai";
@@ -15,7 +15,7 @@ import {
 
 export const runtime = "edge";
 
-const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
+const convertMessageToLangChainMessage = (message: Message) => {
   if (message.role === "user") {
     return new HumanMessage(message.content);
   } else if (message.role === "assistant") {
@@ -25,7 +25,7 @@ const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   }
 };
 
-const convertLangChainMessageToVercelMessage = (message: BaseMessage) => {
+const convertLangChainMessageToMessage = (message: BaseMessage) => {
   if (message._getType() === "human") {
     return { content: message.content, role: "user" };
   } else if (message._getType() === "ai") {
@@ -57,10 +57,10 @@ export async function POST(req: NextRequest) {
      */
     const messages = (body.messages ?? [])
       .filter(
-        (message: VercelChatMessage) =>
+        (message: Message) =>
           message.role === "user" || message.role === "assistant",
       )
-      .map(convertVercelMessageToLangChainMessage);
+      .map(convertMessageToLangChainMessage);
 
     // Requires process.env.SERPAPI_API_KEY to be set: https://serpapi.com/
     // You can remove this or use a different tool instead.
@@ -129,7 +129,7 @@ export async function POST(req: NextRequest) {
 
       return NextResponse.json(
         {
-          messages: result.messages.map(convertLangChainMessageToVercelMessage),
+          messages: result.messages.map(convertLangChainMessageToMessage),
         },
         { status: 200 },
       );
